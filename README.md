@@ -29,13 +29,13 @@ Let's break this down into major steps
 
 
     ```
-    $ make build
+    make build
     ```
 ### Fetch data from S3
 - Connect to the S3 `cohort-analysis` bucket and download the input data files:
 
     ```
-    $ make run
+    make run
     ```
 ### Build Docker containers
 - Start Docker Desktop
@@ -61,5 +61,5 @@ During `docker-compose`, dbt runs the following commands
 - Summarize the user counts for each cohort to a CSV file:
 
     ```
-    $ make summary
+    make summary
     ```
