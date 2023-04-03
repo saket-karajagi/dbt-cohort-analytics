@@ -18,7 +18,7 @@ dbt/dbt_modules
 dbt/dbt_packages
 dbt/logs
 dbt/target
-dbt/data/.gitkeep
+dbt/.gitkeep
 .user.yml
 .DS_Store
 */.DS_Store

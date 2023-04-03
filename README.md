@@ -1,6 +1,6 @@
 ## Project Files
 - app
-    - download_s3_object.py - The script that fetches input files from the S3 bucket
+    - download_s3_object.py - The script that fetches input files from a S3 bucket
     - summarize_cohorts.py - The script to generate the summary report to a CSV file
     - config.py - To store S3 credentials
 - dbt
@@ -14,7 +14,7 @@
 
 ## Workflow
 Let's break this down into major steps
-- Setup
+- Setup the environment
 - Get input data
 - Build Docker containers
 - Transform and load data to a Postgres DB using dbt
@@ -22,41 +22,43 @@ Let's break this down into major steps
 
 ## Project Setup
 ### Download the prerequisites and setup the environment
-- Download and install: Docker, Python3 and virtualenv
-- Clone the repo and `cd` to this directory
-- Open a terminal and create a Python virtual environment using:
+- Prerequisites: Docker Desktop, Python3 and virtualenv
+- Open a terminal, clone the repo and `cd` to this directory
+- Add the supplied file app/config.py
+- Create a Python virtual environment using:
 
 
     ```
     $ make build
     ```
 ### Fetch data from S3
-- Connect to the S3 `cohort-analysis` bucket to get the data files:
+- Connect to the S3 `cohort-analysis` bucket and download the input data files:
 
     ```
     $ make run
     ```
 ### Build Docker containers
+- Start Docker Desktop
 - Now that the CSV files are in the `data` folder, we can build the Docker containers using this command:
 
 
     ```
-    docker-compose up --no--attach postgres
+    docker-compose up --no-attach postgres
     ```
-This command will build our `dbt` and `postgres` containers. This will also run our data loading and model transformations.
+This command will build the `dbt` and `postgres` containers. This will also load the data and run the transformations on dbt.
 
-### Transform and load data to Postgres DB using dbt
+### Load and transform data on Postgres DB using dbt
 During `docker-compose`, dbt runs the following commands
-- `dbt debug`: Checks the connection with the Postgres database
-- `dbt deps`: Installs the test dependencies
-- `dbt seed`: Loads the CSV files into source tables in the database in `postgres`
-- `dbt test`: Runs tests on the source tables in the database in `postgres`
-- `dbt snapshot`: Creates snapshot tables for the source data
-- `dbt run`: Runs the transformations and loads the data into the database
+- `dbt debug`: Check connection with the Postgres database
+- `dbt deps`: Install the test dependencies
+- `dbt seed`: Load the CSV files into source tables in `postgres`
+- `dbt test`: Run tests on the source data in `postgres`
+- `dbt snapshot`: Create snapshot tables for the source data
+- `dbt run`: Run the transformations to create fact tables on the database
 
 
 ### Summary
-- Summarize the counts for each cohort to a CSV file:
+- Summarize the user counts for each cohort to a CSV file:
 
     ```
     $ make summary

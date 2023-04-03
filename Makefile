@@ -9,10 +9,10 @@ run:
 	@. venv/bin/activate; python3 app/download_s3_object.py;
 	@echo "--COMPLETE--";
 
-report:
+summary:
 	@echo "--COPYING data to CSV--";
 	@. venv/bin/activate; python3 app/summarize_cohorts.py;
-	@echo "--COMPLETED TO data/cohorts.csv--";
+	@echo "--COMPLETED TO data/output.csv--";
 
 clean:
 	@echo "--DELETING venv and pycache--";
