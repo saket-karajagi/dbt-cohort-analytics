@@ -1,0 +1,46 @@
+version: 2
+
+sources:
+  - name: fitbod
+    schema: cohort_analysis
+    tables:
+      - name: latest_users
+      - name: latest_aliases
+      - name: latest_events
+
+seeds:
+  - name: latest_users
+    columns:
+      - name: user_id
+        tests:
+          - not_null
+          - unique
+      - name: email
+        tests:
+          - not_null
+          - unique
+  
+  - name: latest_aliases
+    columns:
+      - name: user_id
+        tests:
+          - not_null
+      - name: alias_user_id
+        tests:
+          - not_null
+      - name: timestamp
+        tests:
+          - not_null
+  
+  - name: latest_events
+    columns:
+      - name: user_id
+        tests:
+          - not_null
+      - name: feature_key
+          - not_null
+      - name: feature_value
+          - not_null
+      - name: timestamp
+        tests:
+          - not_null

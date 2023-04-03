@@ -1,0 +1,12 @@
+fitbod:
+  outputs:
+    dev:
+      type: postgres
+      threads: 5
+      host: postgres
+      port: 5432
+      user: dbt
+      pass: password1
+      dbname: fitbod
+      schema: cohort_analysis
+  target: dev
