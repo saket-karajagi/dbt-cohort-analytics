@@ -24,7 +24,7 @@ Let's break this down into major steps
 ### Download the prerequisites and setup the environment
 - Prerequisites: MacOS, Docker Desktop, Python3 and virtualenv
 - Open a terminal, clone the repo and `cd` to this directory
-- Add the supplied file app/config.py
+- Add the supplied file to the path `app/config.py`
 - Create a Python virtual environment using:
 
 
